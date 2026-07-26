@@ -96,12 +96,16 @@ const Hero = () => {
                 variants={sentence}
                 initial="hidden"
                 animate="visible"
-                style={{ display: 'flex', flexWrap: 'wrap' }}
+                style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25em' }}
               >
-                {titleText.map((char, index) => (
-                  <motion.span key={char + "-" + index} variants={letter} className="text-gradient-accent">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
+                {"Digital Experiences".split(" ").map((word, wordIndex) => (
+                  <span key={wordIndex} style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+                    {word.split("").map((char, index) => (
+                      <motion.span key={char + "-" + index} variants={letter} className="text-gradient-accent">
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
                 ))}
               </motion.div>
             </h1>
@@ -147,19 +151,6 @@ const Hero = () => {
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 40%)' }}></div>
-            </motion.div>
-            
-            {/* Floating Elements */}
-            <motion.div 
-              animate={{ y: [-15, 15, -15], rotateZ: [-2, 2, -2] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              style={{ position: 'absolute', top: '15%', left: '-10%', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)', padding: '1.25rem', borderRadius: '1.25rem', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '1rem', transformStyle: 'preserve-3d', transform: 'translateZ(50px)' }}
-            >
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--accent-secondary)', boxShadow: '0 0 10px var(--accent-secondary)' }}></div>
-              <div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Awwwards</div>
-                <div style={{ fontWeight: 700, fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>Site of the Day</div>
-              </div>
             </motion.div>
           </motion.div>
         </div>

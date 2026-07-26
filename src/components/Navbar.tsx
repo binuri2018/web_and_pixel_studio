@@ -71,7 +71,8 @@ const Navbar = () => {
     >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <a href="#" className="hover-target" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'white' }}>
-          <img src="/logo.png" alt="Web & Pixel Studio Logo" style={{ height: '48px', objectFit: 'contain' }} />
+          <img src="/logo.jpeg" alt="Web & Pixel Studio Logo" style={{ height: '48px', objectFit: 'contain' }} />
+          <span style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)' }}>Web & Pixel Studio</span>
         </a>
 
         <div style={{ display: 'none', gap: '3rem', alignItems: 'center' }} className="desktop-nav">
