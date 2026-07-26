@@ -1,0 +1,179 @@
+import { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 800], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+
+  // Mouse parallax effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [10, -10]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth) - 0.5;
+      const y = (e.clientY / innerHeight) - 0.5;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Text animation variants
+  const sentence = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.1,
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const letter = {
+    hidden: { opacity: 0, y: 50, rotate: -5 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] },
+    },
+  };
+
+  const titleText = "Digital Experiences".split("");
+
+  return (
+    <section 
+      ref={containerRef}
+      className="section" 
+      style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        paddingTop: '8rem', 
+        overflow: 'hidden',
+        perspective: '1000px'
+      }}
+    >
+      <div className="bg-glow-blur" style={{ top: '10%', left: '10%', width: '50vw', height: '50vw', background: 'var(--accent-primary)' }}></div>
+      <div className="bg-glow-blur" style={{ bottom: '-10%', right: '0%', width: '40vw', height: '40vw', background: 'var(--accent-secondary)' }}></div>
+      
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }} className="hero-grid">
+          
+          <motion.div style={{ zIndex: 10 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', background: 'var(--glass-bg)', padding: '0.75rem 1.25rem', borderRadius: '2rem', border: '1px solid var(--glass-border)', marginBottom: '2.5rem', backdropFilter: 'blur(10px)' }}
+            >
+              <Sparkles size={18} color="var(--accent-secondary)" />
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Premium Web & Software Studio</span>
+            </motion.div>
+            
+            <h1 style={{ fontSize: '5.5rem', lineHeight: 1.05, fontWeight: 800, marginBottom: '1.5rem' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.2em' }}>
+                <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+                  Building <span className="outline-text">Iconic</span>
+                </motion.div>
+              </div>
+              <motion.div 
+                variants={sentence}
+                initial="hidden"
+                animate="visible"
+                style={{ display: 'flex', flexWrap: 'wrap' }}
+              >
+                {titleText.map((char, index) => (
+                  <motion.span key={char + "-" + index} variants={letter} className="text-gradient-accent">
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{ fontSize: '1.35rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '90%', lineHeight: 1.6, fontWeight: 400 }}
+            >
+              We craft award-winning websites, robust software, and immersive brand experiences for companies that refuse to blend in.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
+            >
+              <a href="#contact" className="btn-primary hover-target">
+                <span>Start Project</span>
+                <ArrowRight size={20} style={{ marginLeft: '0.75rem', position: 'relative', zIndex: 2 }} />
+              </a>
+              <a href="#work" className="btn-secondary hover-target">
+                View Showreel
+              </a>
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            style={{ y: y1, opacity, rotateX, rotateY, transformStyle: "preserve-3d" }}
+            className="hero-image-container"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{ position: 'relative', width: '100%', paddingBottom: '120%', borderRadius: '2rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px -20px rgba(139, 92, 246, 0.3)', background: 'linear-gradient(145deg, #111, #000)' }}
+            >
+              <img 
+                src="/hero_visual.png" 
+                alt="Premium Digital Experience" 
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 40%)' }}></div>
+            </motion.div>
+            
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [-15, 15, -15], rotateZ: [-2, 2, -2] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              style={{ position: 'absolute', top: '15%', left: '-10%', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)', padding: '1.25rem', borderRadius: '1.25rem', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '1rem', transformStyle: 'preserve-3d', transform: 'translateZ(50px)' }}
+            >
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--accent-secondary)', boxShadow: '0 0 10px var(--accent-secondary)' }}></div>
+              <div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Awwwards</div>
+                <div style={{ fontWeight: 700, fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>Site of the Day</div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+      
+      <style>{`
+        @media (max-width: 992px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 4rem !important; }
+          .hero-grid h1 { font-size: 3.5rem !important; }
+          .hero-image-container { padding: 0 2rem; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+export default Hero;
