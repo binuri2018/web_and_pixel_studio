@@ -15,7 +15,7 @@ import CustomCursor from './components/CustomCursor';
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis({
+    new Lenis({
       autoRaf: true,
     });
 

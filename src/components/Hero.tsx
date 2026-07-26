@@ -50,7 +50,7 @@ const Hero = () => {
       opacity: 1,
       y: 0,
       rotate: 0,
-      transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] },
+      transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] as [number, number, number, number] },
     },
   };
 

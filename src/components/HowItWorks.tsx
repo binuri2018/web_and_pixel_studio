@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const steps = [
   { id: '01', title: 'Discover', desc: 'Deep dive into your business, goals, and technical requirements to define a strategic roadmap. We leave no stone unturned in understanding your domain.' },

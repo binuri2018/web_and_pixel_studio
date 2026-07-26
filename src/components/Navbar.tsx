@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const MagneticLink = ({ children, href }: { children: React.ReactNode, href: string }) => {
   const ref = useRef<HTMLAnchorElement>(null);

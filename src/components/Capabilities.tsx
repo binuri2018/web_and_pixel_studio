@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Layout, Smartphone, Brain, PenTool, Workflow, Cloud, HeadphonesIcon } from 'lucide-react';
+import { Code, Layout, Smartphone, Brain, PenTool, Cloud } from 'lucide-react';
 
 const services = [
   { icon: Code, title: 'Custom Software', desc: 'Scalable applications built for your unique business needs. We engineer robust backend systems and performant frontends.' },

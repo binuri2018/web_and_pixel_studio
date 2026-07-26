@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Cpu, MessageSquare, Scaling, Handshake } from 'lucide-react';
 
