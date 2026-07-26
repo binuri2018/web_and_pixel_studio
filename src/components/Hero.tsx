@@ -54,7 +54,6 @@ const Hero = () => {
     },
   };
 
-  const titleText = "Digital Experiences".split("");
 
   return (
     <section 

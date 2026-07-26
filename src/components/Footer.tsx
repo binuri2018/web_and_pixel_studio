@@ -1,4 +1,4 @@
-import { Link, MessageCircle, Mail, Globe, Camera, Video } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
