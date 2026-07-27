@@ -8,10 +8,12 @@ import About from './components/About';
 import Capabilities from './components/Capabilities';
 import WhyChooseUs from './components/WhyChooseUs';
 import HowItWorks from './components/HowItWorks';
+import ProductsShowcase from './components/ProductsShowcase';
 import Proof from './components/Proof';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   useEffect(() => {
@@ -34,10 +36,12 @@ function App() {
         <Capabilities />
         <WhyChooseUs />
         <HowItWorks />
+        <ProductsShowcase />
         <Proof />
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
