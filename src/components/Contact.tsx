@@ -117,7 +117,7 @@ const Contact = () => {
   });
 
   return (
-    <section id="contact" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)', padding: '15rem 0' }}>
+    <section id="contact" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)', padding: '10rem 0' }}>
       <div className="bg-glow-blur" style={{ bottom: '-20%', left: '-20%', width: '60vw', height: '60vw', background: 'rgba(139, 92, 246, 0.15)' }}></div>
       <div className="bg-glow-blur" style={{ top: '-10%', right: '-10%', width: '40vw', height: '40vw', background: 'rgba(6, 182, 212, 0.1)' }}></div>
       

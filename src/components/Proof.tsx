@@ -27,7 +27,7 @@ const AnimatedCounter = ({ end, suffix = '', duration = 2 }: { end: number, suff
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
-const PortfolioCard = ({ title, category, imgIndex }: { title: string, category: string, imgIndex: number }) => {
+const PortfolioCard = ({ title, category, imgIndex = 0, image, link }: { title: string, category: string, imgIndex?: number, image?: string, link?: string }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -50,9 +50,15 @@ const PortfolioCard = ({ title, category, imgIndex }: { title: string, category:
     'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
   ];
 
+  const bgImage = image || images[imgIndex];
+
+  const CardWrapper = link ? motion.a : motion.div;
+  const linkProps = link ? { href: link, target: '_blank', rel: 'noopener noreferrer' } : {};
+
   return (
-    <motion.div
-      ref={cardRef}
+    <CardWrapper
+      {...linkProps}
+      ref={cardRef as any}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -64,14 +70,16 @@ const PortfolioCard = ({ title, category, imgIndex }: { title: string, category:
         height: '450px', 
         borderRadius: '1.5rem', 
         overflow: 'hidden', 
-        cursor: 'none' 
+        cursor: 'none',
+        display: 'block',
+        textDecoration: 'none'
       }}
     >
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)', zIndex: 1 }}></div>
       <motion.div 
         style={{ 
           position: 'absolute', inset: 0, 
-          backgroundImage: `url(${images[imgIndex]})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           filter: isHovered ? 'grayscale(0%)' : 'grayscale(100%)',
@@ -111,7 +119,7 @@ const PortfolioCard = ({ title, category, imgIndex }: { title: string, category:
       >
         <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>View</span>
       </motion.div>
-    </motion.div>
+    </CardWrapper>
   );
 };
 
@@ -174,9 +182,9 @@ const Proof = () => {
             </a>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-            <PortfolioCard title="Nexus Fintech" category="Web App & AI" imgIndex={0} />
+            <PortfolioCard title="Lumina Health" category="Web App & AI" imgIndex={0} />
             <PortfolioCard title="Aether Logistics" category="Dashboard Design" imgIndex={1} />
-            <PortfolioCard title="Lumina Healthcare" category="Mobile App" imgIndex={2} />
+            <PortfolioCard title="Ceylon Crunch" category="Web App" image="/ceylon-crunch.png" link="https://ceyloncrunch.netlify.app/" />
           </div>
         </div>
 

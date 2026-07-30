@@ -85,7 +85,7 @@ const Hero = () => {
               <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Premium Web & Software Studio</span>
             </motion.div>
             
-            <h1 style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.5rem', lineHeight: 1.1, fontWeight: 500, marginBottom: '1.5rem' }}>
+            <h1 style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.75rem', lineHeight: 1.1, fontWeight: 500, marginBottom: '1.5rem' }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.2em' }}>
                 <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
                   Building <span className="outline-text">Iconic</span>
@@ -113,7 +113,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{ fontSize: '1.35rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '90%', lineHeight: 1.6, fontWeight: 400 }}
+              style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '90%', lineHeight: 1.6, fontWeight: 400 }}
             >
               We craft award-winning websites, robust software, and immersive brand experiences for companies that refuse to blend in.
             </motion.p>
