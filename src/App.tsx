@@ -8,7 +8,7 @@ import About from './components/About';
 import Capabilities from './components/Capabilities';
 import WhyChooseUs from './components/WhyChooseUs';
 import HowItWorks from './components/HowItWorks';
-import ProductsShowcase from './components/ProductsShowcase';
+import DigitalFamily from './components/DigitalFamily';
 import Proof from './components/Proof';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -36,8 +36,8 @@ function App() {
         <Capabilities />
         <WhyChooseUs />
         <HowItWorks />
-        <ProductsShowcase />
         <Proof />
+        <DigitalFamily />
         <Contact />
       </main>
       <Footer />
