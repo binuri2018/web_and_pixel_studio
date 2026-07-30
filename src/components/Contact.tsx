@@ -2,7 +2,9 @@ import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Send, ArrowRight } from 'lucide-react';
 
-const MagneticButton = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => {
+const FORMSUBMIT_EMAIL = 'Web.pstudio.001@gmail.com';
+
+const MagneticButton = ({ children, className = '', type = 'button' }: { children: React.ReactNode, className?: string, type?: 'button' | 'submit' | 'reset' }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -28,6 +30,7 @@ const MagneticButton = ({ children, className = '' }: { children: React.ReactNod
   return (
     <motion.button
       ref={ref}
+      type={type}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: smoothX, y: smoothY }}
@@ -38,7 +41,7 @@ const MagneticButton = ({ children, className = '' }: { children: React.ReactNod
   );
 };
 
-const FloatingInput = ({ label, type = 'text', textarea = false, value, onChange, required }: { label: string, type?: string, textarea?: boolean, value: string, onChange: (e: any) => void, required?: boolean }) => {
+const FloatingInput = ({ label, name, type = 'text', textarea = false, value, onChange, required, autoComplete }: { label: string, name: string, type?: string, textarea?: boolean, value: string, onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void, required?: boolean, autoComplete?: string }) => {
   const [isFocused, setIsFocused] = useState(false);
   const active = isFocused || value.length > 0;
 
@@ -78,6 +81,7 @@ const FloatingInput = ({ label, type = 'text', textarea = false, value, onChange
       </motion.label>
       {textarea ? (
         <textarea 
+          name={name}
           rows={4} 
           style={style}
           value={value}
@@ -85,9 +89,11 @@ const FloatingInput = ({ label, type = 'text', textarea = false, value, onChange
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           required={required}
+          autoComplete={autoComplete}
         />
       ) : (
         <input 
+          name={name}
           type={type}
           style={style}
           value={value}
@@ -95,6 +101,7 @@ const FloatingInput = ({ label, type = 'text', textarea = false, value, onChange
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           required={required}
+          autoComplete={autoComplete}
         />
       )}
     </div>
@@ -103,19 +110,12 @@ const FloatingInput = ({ label, type = 'text', textarea = false, value, onChange
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
-    company: '',
-    project: ''
+    subject: '',
+    message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Project Inquiry from ${formData.firstName} ${formData.lastName}`);
-    const body = encodeURIComponent(`Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nCompany: ${formData.company || 'N/A'}\n\nProject Details:\n${formData.project}`);
-    window.open(`mailto:Web.pstudio.001@gmail.com?subject=${subject}&body=${body}`);
-  };
   return (
     <section id="contact" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-secondary)', padding: '15rem 0' }}>
       <div className="bg-glow-blur" style={{ bottom: '-20%', left: '-20%', width: '60vw', height: '60vw', background: 'rgba(139, 92, 246, 0.15)' }}></div>
@@ -141,8 +141,8 @@ const Contact = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
                 <div style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>Email Us</div>
-                <a href="mailto:Web.pstudio.001@gmail.com" className="hover-target" style={{ color: 'white', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Web.pstudio.001@gmail.com <ArrowRight size={20} className="text-gradient-accent" />
+                <a href={`mailto:${FORMSUBMIT_EMAIL}`} className="hover-target" style={{ color: 'white', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                  {FORMSUBMIT_EMAIL} <ArrowRight size={20} className="text-gradient-accent" />
                 </a>
               </div>
               <div>
@@ -159,20 +159,52 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            onSubmit={handleSubmit}
+            action={`https://formsubmit.co/${FORMSUBMIT_EMAIL}`}
+            method="POST"
             style={{ padding: '3rem', background: 'rgba(255,255,255,0.02)', borderRadius: '2rem', border: '1px solid var(--border-color)', backdropFilter: 'blur(20px)' }}
           >
+            {/* FormSubmit hidden configuration fields */}
+            <input type="hidden" name="_subject" value="New Project Inquiry — Web & Pixel Studio" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
             <h3 style={{ fontSize: '2rem', marginBottom: '2rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>Project Inquiry</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-              <FloatingInput label="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} required />
-              <FloatingInput label="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} required />
-            </div>
-            <FloatingInput label="Email Address" type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} required />
-            <FloatingInput label="Company / Organization" value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})} />
-            <FloatingInput label="Tell us about your project" textarea value={formData.project} onChange={(e) => setFormData({...formData, project: e.target.value})} required />
+            <FloatingInput
+              label="Full Name"
+              name="name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              autoComplete="name"
+            />
+            <FloatingInput
+              label="Email Address"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+              autoComplete="email"
+            />
+            <FloatingInput
+              label="Subject"
+              name="subject"
+              value={formData.subject}
+              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+              autoComplete="off"
+            />
+            <FloatingInput
+              label="Tell us about your project"
+              name="message"
+              textarea
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              required
+            />
 
             <div style={{ marginTop: '4rem', display: 'flex', justifyContent: 'flex-end' }}>
-              <MagneticButton>
+              <MagneticButton type="submit">
                 <span style={{ fontSize: '1.25rem', padding: '0.5rem 1rem' }}>Send Message</span>
                 <Send size={20} style={{ marginLeft: '0.5rem' }} />
               </MagneticButton>
