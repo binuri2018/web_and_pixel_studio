@@ -107,6 +107,22 @@ const HowItWorks = () => {
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .howitworks-title { font-size: clamp(2rem, 7vw, 3.5rem) !important; }
+          .howitworks-steps { gap: 4rem !important; paddingLeft: 0 !important; }
+          .howitworks-step { gap: 2rem !important; }
+          .howitworks-step-content h3 { font-size: 1.75rem !important; }
+          .howitworks-step-content p { font-size: 1rem !important; }
+        }
+        @media (max-width: 480px) {
+          .howitworks-title { font-size: clamp(1.8rem, 8vw, 2.5rem) !important; }
+          .howitworks-step { gap: 1.5rem !important; }
+          .howitworks-step-number { width: 65px !important; height: 65px !important; font-size: 1.2rem !important; margin-left: -32px !important; }
+          .howitworks-step-content h3 { font-size: 1.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 };

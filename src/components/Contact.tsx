@@ -141,7 +141,7 @@ const Contact = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
                 <div style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>Email Us</div>
-                <a href={`mailto:${FORMSUBMIT_EMAIL}`} className="hover-target" style={{ color: 'white', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                <a href={`mailto:${FORMSUBMIT_EMAIL}`} className="hover-target contact-email-text" style={{ color: 'white', textDecoration: 'none', fontSize: '1.35rem', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', wordBreak: 'break-all' }}>
                   {FORMSUBMIT_EMAIL} <ArrowRight size={20} className="text-gradient-accent" />
                 </a>
               </div>
@@ -216,8 +216,16 @@ const Contact = () => {
 
       <style>{`
         @media (max-width: 992px) {
-          .contact-grid { grid-template-columns: 1fr !important; gap: 4rem !important; }
-          #contact h2 { font-size: 3.5rem !important; }
+          .contact-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
+          #contact h2 { font-size: clamp(2.5rem, 8vw, 4rem) !important; }
+          #contact p { max-width: 100% !important; }
+          #contact form { padding: 2rem !important; }
+        }
+        @media (max-width: 480px) {
+          #contact h2 { font-size: clamp(1.9rem, 9vw, 3rem) !important; }
+          #contact form { padding: 1.5rem !important; border-radius: 1.25rem !important; }
+          .contact-email-text { font-size: 0.95rem !important; word-break: break-all; }
+          #contact h3 { font-size: 1.5rem !important; }
         }
       `}</style>
     </section>

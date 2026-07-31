@@ -79,6 +79,15 @@ const WhyChooseUs = () => {
           })}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .why-choose-heading { font-size: clamp(2rem, 7vw, 3rem) !important; }
+        }
+        @media (max-width: 480px) {
+          .why-choose-heading { font-size: clamp(1.75rem, 8vw, 2.5rem) !important; }
+        }
+      `}</style>
     </section>
   );
 };

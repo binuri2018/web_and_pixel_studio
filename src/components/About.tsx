@@ -90,7 +90,18 @@ const About = () => {
       
       <style>{`
         @media (max-width: 992px) {
-          #about h2 { font-size: 3rem !important; }
+          #about { height: auto !important; }
+          #about > div:first-child {
+            position: relative !important;
+            height: auto !important;
+            min-height: unset !important;
+          }
+          #about .container > div {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+          #about h2 { font-size: clamp(2rem, 7vw, 3.5rem) !important; }
+          #about p { font-size: 1.05rem !important; max-width: 100% !important; }
         }
       `}</style>
     </section>

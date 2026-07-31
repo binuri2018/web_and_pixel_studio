@@ -202,6 +202,23 @@ const Proof = () => {
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          #work h2.proof-heading { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+          #work .proof-work-header { flex-direction: column; align-items: flex-start !important; gap: 1rem; }
+          #work .proof-work-header h3 { font-size: clamp(1.5rem, 6vw, 2.5rem) !important; }
+        }
+        @media (max-width: 600px) {
+          #work .proof-portfolio-card { height: 320px !important; }
+          #work .proof-stat-value { font-size: 3rem !important; }
+        }
+        @media (max-width: 480px) {
+          #work .proof-stat-value { font-size: 2.5rem !important; }
+          #work .proof-portfolio-card { height: 260px !important; }
+          #work .proof-portfolio-card h3 { font-size: 1.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 };

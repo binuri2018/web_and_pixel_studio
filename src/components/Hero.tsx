@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,6 +114,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="hero-cta-buttons"
               style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
             >
               <a href="#contact" className="btn-primary hover-target" style={{ boxShadow: '0 0 15px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2)' }}>
@@ -378,9 +379,16 @@ const Hero = () => {
       
       <style>{`
         @media (max-width: 992px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 4rem !important; }
-          .hero-grid h1 { font-size: 3rem !important; }
-          .hero-image-container { padding: 0 2rem; }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 3rem !important; text-align: center; }
+          .hero-grid h1 { font-size: clamp(2.2rem, 8vw, 3.5rem) !important; }
+          .hero-image-container { max-width: 380px; margin: 0 auto; padding: 0 1rem; }
+          .hero-cta-buttons { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+          .hero-grid h1 { font-size: clamp(1.9rem, 9vw, 2.8rem) !important; }
+          .hero-cta-buttons { flex-direction: column !important; align-items: stretch !important; width: 100%; }
+          .hero-cta-buttons a { text-align: center; justify-content: center; }
+          .hero-grid p { font-size: 1rem !important; max-width: 100% !important; }
         }
       `}</style>
     </section>
