@@ -141,20 +141,244 @@ const Hero = () => {
             style={{ y: y1, opacity, rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="hero-image-container"
           >
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative', width: '100%', paddingBottom: '85%', borderRadius: '2rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px -20px rgba(139, 92, 246, 0.3)', background: 'linear-gradient(145deg, #111, #000)' }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{ position: 'relative', width: '100%', paddingBottom: '100%' }}
             >
-              <img 
-                src="/hero_visual.png" 
-                alt="Premium Digital Experience" 
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+              {/* Outer Pulsing Glow Ring */}
+              <motion.div
+                animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                style={{
+                  position: 'absolute',
+                  inset: '-4%',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(139, 92, 246, 0.15)',
+                  boxShadow: '0 0 60px rgba(139, 92, 246, 0.08), inset 0 0 60px rgba(139, 92, 246, 0.05)',
+                  pointerEvents: 'none'
+                }}
               />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 40%)' }}></div>
-              
 
+              {/* Orbiting Ring 1 — Slow, tilted */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                style={{
+                  position: 'absolute',
+                  inset: '-8%',
+                  borderRadius: '50%',
+                  border: '1px dashed rgba(6, 182, 212, 0.2)',
+                  transform: 'rotateX(60deg) rotateZ(0deg)',
+                  transformStyle: 'preserve-3d',
+                  pointerEvents: 'none'
+                }}
+              >
+                {/* Orbiting dot */}
+                <motion.div style={{
+                  position: 'absolute', top: '0%', left: '50%', width: '8px', height: '8px',
+                  borderRadius: '50%', background: 'var(--accent-secondary)',
+                  boxShadow: '0 0 12px var(--accent-secondary), 0 0 24px rgba(6, 182, 212, 0.3)',
+                  transform: 'translate(-50%, -50%)'
+                }} />
+              </motion.div>
+
+              {/* Orbiting Ring 2 — Faster, opposite tilt */}
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+                style={{
+                  position: 'absolute',
+                  inset: '-2%',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(139, 92, 246, 0.12)',
+                  transform: 'rotateX(70deg) rotateY(20deg)',
+                  transformStyle: 'preserve-3d',
+                  pointerEvents: 'none'
+                }}
+              >
+                <motion.div style={{
+                  position: 'absolute', bottom: '0%', left: '50%', width: '6px', height: '6px',
+                  borderRadius: '50%', background: 'var(--accent-primary)',
+                  boxShadow: '0 0 10px var(--accent-primary), 0 0 20px rgba(139, 92, 246, 0.3)',
+                  transform: 'translate(-50%, 50%)'
+                }} />
+              </motion.div>
+
+              {/* Central Image Container */}
+              <div style={{
+                position: 'absolute',
+                inset: '10%',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '2px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 30px 80px -20px rgba(139, 92, 246, 0.35), 0 0 40px rgba(6, 182, 212, 0.1), inset 0 0 30px rgba(0,0,0,0.5)',
+                background: 'linear-gradient(145deg, #0a0a14, #050508)'
+              }}>
+                <img 
+                  src="/hero_visual.png" 
+                  alt="Premium Digital Experience" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85 }}
+                />
+                {/* Inner radial gradient overlay */}
+                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 30%, transparent 40%, rgba(3,3,7,0.6) 100%)' }} />
+                {/* Bottom fade */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(3,3,7,0.7) 0%, transparent 50%)' }} />
+                {/* Scan Line Effect */}
+                <motion.div
+                  animate={{ top: ['-10%', '110%'] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'linear', repeatDelay: 3 }}
+                  style={{
+                    position: 'absolute', left: 0, right: 0, height: '1px',
+                    background: 'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent)',
+                    boxShadow: '0 0 15px rgba(6, 182, 212, 0.3)',
+                    pointerEvents: 'none'
+                  }}
+                />
+              </div>
+
+              {/* Floating Element: Code Snippet */}
+              <motion.div
+                animate={{ y: [-8, 8, -8], x: [-3, 3, -3] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                style={{
+                  position: 'absolute', top: '6%', right: '2%',
+                  background: 'rgba(10, 10, 20, 0.85)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(139, 92, 246, 0.25)',
+                  borderRadius: '12px',
+                  padding: '12px 16px',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.5)',
+                  zIndex: 10,
+                  transform: 'translateZ(40px)'
+                }}
+              >
+                <div style={{ display: 'flex', gap: '4px', marginBottom: '8px' }}>
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#EF4444' }} />
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F59E0B' }} />
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
+                </div>
+                <div style={{ fontFamily: 'monospace', fontSize: '0.6rem', lineHeight: 1.6 }}>
+                  <span style={{ color: '#C084FC' }}>const</span> <span style={{ color: '#67E8F9' }}>studio</span> <span style={{ color: '#94A3B8' }}>=</span> <span style={{ color: '#FDE68A' }}>{'{'}</span><br/>
+                  <span style={{ color: '#94A3B8' }}>{'  '}</span><span style={{ color: '#67E8F9' }}>craft</span><span style={{ color: '#94A3B8' }}>:</span> <span style={{ color: '#86EFAC' }}>"pixel-perfect"</span><br/>
+                  <span style={{ color: '#FDE68A' }}>{'}'}</span><span style={{ color: '#94A3B8' }}>;</span>
+                </div>
+              </motion.div>
+
+              {/* Floating Element: Color Palette */}
+              <motion.div
+                animate={{ y: [6, -10, 6], rotate: [-4, 2, -4] }}
+                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                style={{
+                  position: 'absolute', bottom: '8%', left: '0%',
+                  background: 'rgba(10, 10, 20, 0.8)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(6, 182, 212, 0.2)',
+                  borderRadius: '14px',
+                  padding: '10px 14px',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.5)',
+                  zIndex: 10,
+                  transform: 'translateZ(30px)'
+                }}
+              >
+                <div style={{ fontSize: '0.55rem', color: 'var(--text-secondary)', marginBottom: '6px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Palette</div>
+                <div style={{ display: 'flex', gap: '5px' }}>
+                  {['#8B5CF6', '#06B6D4', '#EC4899', '#F59E0B', '#10B981'].map((c, i) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ scale: 1.3 }}
+                      style={{ width: '18px', height: '18px', borderRadius: '6px', background: c, border: '1px solid rgba(255,255,255,0.1)' }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Floating Element: Responsive Preview */}
+              <motion.div
+                animate={{ y: [-6, 8, -6], x: [4, -4, 4] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                style={{
+                  position: 'absolute', bottom: '16%', right: '-2%',
+                  background: 'rgba(10, 10, 20, 0.8)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px',
+                  padding: '10px 14px',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.5)',
+                  zIndex: 10,
+                  display: 'flex', alignItems: 'center', gap: '8px',
+                  transform: 'translateZ(50px)'
+                }}
+              >
+                <div style={{ width: '26px', height: '18px', borderRadius: '3px', border: '1.5px solid #67E8F9', position: 'relative' }}>
+                  <div style={{ position: 'absolute', bottom: '-4px', left: '25%', right: '25%', height: '2px', background: '#67E8F9', borderRadius: '1px' }} />
+                </div>
+                <div style={{ width: '12px', height: '18px', borderRadius: '2px', border: '1.5px solid #C084FC' }} />
+                <div style={{ width: '14px', height: '16px', borderRadius: '2px', border: '1.5px solid #F472B6' }} />
+              </motion.div>
+
+              {/* Floating Element: Performance Badge (top-left) */}
+              <motion.div
+                animate={{ y: [5, -7, 5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                style={{
+                  position: 'absolute', top: '14%', left: '-2%',
+                  background: 'rgba(10, 10, 20, 0.85)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '12px',
+                  padding: '10px 14px',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.5)',
+                  zIndex: 10,
+                  display: 'flex', alignItems: 'center', gap: '8px',
+                  transform: 'translateZ(35px)'
+                }}
+              >
+                <div style={{
+                  width: '28px', height: '28px', borderRadius: '50%',
+                  background: 'conic-gradient(#10B981 0deg, #10B981 330deg, rgba(255,255,255,0.1) 330deg, rgba(255,255,255,0.1) 360deg)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(10,10,20,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.5rem', fontWeight: 800, color: '#10B981' }}>
+                    98
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.6rem', fontWeight: 700, color: '#fff' }}>Speed</div>
+                  <div style={{ fontSize: '0.45rem', color: '#10B981' }}>Optimized</div>
+                </div>
+              </motion.div>
+
+              {/* Ambient Particle Dots */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={`particle-${i}`}
+                  animate={{
+                    y: [0, -20 - Math.random() * 20, 0],
+                    x: [0, (Math.random() - 0.5) * 30, 0],
+                    opacity: [0, 0.8, 0],
+                    scale: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 3 + Math.random() * 3,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: Math.random() * 4
+                  }}
+                  style={{
+                    position: 'absolute',
+                    width: `${3 + Math.random() * 4}px`,
+                    height: `${3 + Math.random() * 4}px`,
+                    borderRadius: '50%',
+                    background: i % 2 === 0 ? 'var(--accent-secondary)' : 'var(--accent-primary)',
+                    boxShadow: `0 0 8px ${i % 2 === 0 ? 'rgba(6,182,212,0.5)' : 'rgba(139,92,246,0.5)'}`,
+                    left: `${10 + Math.random() * 80}%`,
+                    top: `${10 + Math.random() * 80}%`,
+                    pointerEvents: 'none'
+                  }}
+                />
+              ))}
             </motion.div>
           </motion.div>
         </div>
