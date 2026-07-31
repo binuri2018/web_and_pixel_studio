@@ -48,7 +48,7 @@ const About = () => {
               
               {/* Text Block 1 */}
               <motion.div style={{ position: 'absolute', opacity: textOpacity1, y: textY1, width: '100%' }}>
-                <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '2rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                <h2 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '2rem', letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}>
                   Technology Should <br/> Solve Problems—<br/>
                   <span className="text-gradient-accent">Not Create Them.</span>
                 </h2>
@@ -59,7 +59,7 @@ const About = () => {
 
               {/* Text Block 2 */}
               <motion.div style={{ position: 'absolute', opacity: textOpacity2, y: textY2, width: '100%' }}>
-                <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '2rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                <h2 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '2rem', letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}>
                   Design <br/>
                   <span className="outline-text" style={{ color: 'transparent', WebkitTextStroke: '1px var(--accent-secondary)' }}>Without Compromise.</span>
                 </h2>
@@ -70,7 +70,7 @@ const About = () => {
 
               {/* Text Block 3 */}
               <motion.div style={{ position: 'absolute', opacity: textOpacity3, y: textY3, width: '100%' }}>
-                <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '2rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                <h2 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '2rem', letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}>
                   Engineered For <br/>
                   <span className="text-glow" style={{ color: 'var(--accent-primary)' }}>Scale.</span>
                 </h2>

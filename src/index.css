@@ -1,30 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;700;800&display=swap');
 
 :root {
   /* Core Colors */
-  --bg-primary: #030303;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #121212;
+  --bg-primary: #030307;
+  --bg-secondary: #080811;
+  --bg-tertiary: #0f0f1c;
   
   /* Accent Colors */
-  --accent-primary: #8B5CF6; /* Violet */
-  --accent-secondary: #06b6d4; /* Cyan */
-  --accent-tertiary: #4f46e5; /* Indigo */
+  --accent-primary: #8B5CF6; /* Vibrant Violet */
+  --accent-secondary: #06b6d4; /* Electric Cyan */
+  --accent-tertiary: #ec4899; /* Neon Pink Highlight */
   
   /* Typography */
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-tertiary: #71717a;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
   
   /* Utilities */
-  --border-color: rgba(255, 255, 255, 0.06);
-  --glass-bg: rgba(10, 10, 10, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(13, 13, 24, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
   
   /* Fonts */
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-hero: 'Playfair Display', serif;
+  --font-display: 'Outfit', 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-hero: 'Outfit', sans-serif;
 }
 
 * {

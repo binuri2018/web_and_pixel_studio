@@ -626,7 +626,7 @@ const DigitalFamily = () => {
             category="Digital Invitation Platform"
             description="Create elegant online invitations for weddings, birthdays, corporate events, graduations, baby showers, and every special occasion. Beautifully designed, easy to share, and crafted to make every celebration unforgettable."
             buttonText="Explore Invitely"
-            href="https://invitely.site"
+            href="https://invitely2025.netlify.app/"
             gradientType="purple"
             visualType="invitely"
           />

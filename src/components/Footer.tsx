@@ -82,7 +82,7 @@ const Footer = () => {
 
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-            &copy; {new Date().getFullYear()} Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} web & pixel Studio. All rights reserved.
           </p>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
             Designed for the future.

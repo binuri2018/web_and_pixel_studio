@@ -85,7 +85,7 @@ const Hero = () => {
               <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Premium Web & Software Studio</span>
             </motion.div>
             
-            <h1 style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.75rem', lineHeight: 1.1, fontWeight: 500, marginBottom: '1.5rem' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '4.75rem', lineHeight: 1.1, fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.2em' }}>
                 <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
                   Building <span className="outline-text">Iconic</span>
@@ -145,7 +145,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative', width: '100%', paddingBottom: '120%', borderRadius: '2rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px -20px rgba(139, 92, 246, 0.3)', background: 'linear-gradient(145deg, #111, #000)' }}
+              style={{ position: 'relative', width: '100%', paddingBottom: '85%', borderRadius: '2rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px -20px rgba(139, 92, 246, 0.3)', background: 'linear-gradient(145deg, #111, #000)' }}
             >
               <img 
                 src="/hero_visual.png" 
@@ -153,6 +153,8 @@ const Hero = () => {
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 40%)' }}></div>
+              
+
             </motion.div>
           </motion.div>
         </div>

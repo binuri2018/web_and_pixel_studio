@@ -26,7 +26,7 @@ const Capabilities = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.03em', lineHeight: 1.1 }}
+              style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}
             >
               Our <br/> <span className="text-gradient-accent">Capabilities.</span>
             </motion.h2>

@@ -140,7 +140,7 @@ const Proof = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ fontSize: '4.5rem', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.1 }}
+            style={{ fontSize: '4.5rem', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}
           >
             Real Solutions.<br/>
             <span className="text-gradient-accent">Real Impact.</span>
@@ -182,9 +182,22 @@ const Proof = () => {
             </a>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-            <PortfolioCard title="Lumina Health" category="Web App & AI" imgIndex={0} />
-            <PortfolioCard title="Aether Logistics" category="Dashboard Design" imgIndex={1} />
-            <PortfolioCard title="Ceylon Crunch" category="Web App" image="/ceylon-crunch.png" link="https://ceyloncrunch.netlify.app/" />
+            <PortfolioCard 
+              title="Lumina Health" 
+              category="Web App & AI" 
+              image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+            />
+            <PortfolioCard 
+              title="Aether Logistics" 
+              category="Dashboard Design" 
+              image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+            />
+            <PortfolioCard 
+              title="Ceylon Crunch" 
+              category="Web App" 
+              image="/ceylon-crunch.png" 
+              link="https://ceyloncrunch.netlify.app/" 
+            />
           </div>
         </div>
 

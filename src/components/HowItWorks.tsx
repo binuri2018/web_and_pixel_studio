@@ -40,7 +40,7 @@ const HowItWorks = () => {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1rem', borderRadius: '2rem', border: '1px solid var(--accent-secondary)', background: 'rgba(6, 182, 212, 0.1)', marginBottom: '1.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--accent-secondary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Methodology</span>
           </div>
-          <h2 style={{ fontSize: '4rem', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+          <h2 style={{ fontSize: '4rem', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, fontFamily: 'var(--font-display)' }}>
             How We Build <br/><span className="text-gradient-accent">Excellence.</span>
           </h2>
         </motion.div>
